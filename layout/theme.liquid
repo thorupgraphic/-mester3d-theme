@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
+  {{ content_for_header }}
+</head>
+<body>
+  <div id="shopify-app-root"></div>
+
+  <!-- Header/Navigation -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          {% if settings.logo %}
+            <img src="{{ settings.logo | image_url: width: 150 }}" alt="Mester3D Logo" class="logo-image">
+          {% else %}
+            <span class="logo-text">🖨️ Mester3D</span>
+          {% endif %}
+        </div>
+        <button class="navbar-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="navbar-menu" id="navMenu">
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/collections/all">Produkter</a></li>
+          <li><a href="/pages/om-os">Om os</a></li>
+          <li><a href="/cart">Kurv</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Mester3D</h3>
+          <p>Håndværk møder teknologi. 3D-printede produkter med sjæl.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Genveje</h3>
+          <ul>
+            <li><a href="/">Hjem</a></li>
+            <li><a href="/collections/all">Alle produkter</a></li>
+            <li><a href="/pages/kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Følg os</h3>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" title="Instagram">📱</a>
+            <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+            <a href="https://tiktok.com" target="_blank" title="TikTok">🎵</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mester3D. Alle rettigheder forbeholdt.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ 'theme.js' | asset_url }}"></script>
+</body>
+</html>

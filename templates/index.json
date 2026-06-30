@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Lad det blive skabt!",
+        "subheading": "3D-printede produkter med sjæl og skaberkraft",
+        "cta_text": "Se vores kreationer",
+        "cta_link": "/collections/all",
+        "bg_color_1": "#FFD700",
+        "bg_color_2": "#FF8C00",
+        "text_color": "#000000",
+        "cta_color": "#000000"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Vores Kreationer",
+        "description": "Håndværk møder teknologi - se vores seneste 3D-printede mesterværker",
+        "product_limit": 8
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "heading": "Håndværk møder Teknologi",
+        "badge_text": "Skabt med passion"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "Vi på Mester3D tror på, at 3D-printing ikke kun er teknologi – det er en kunstform. Hver enkelt produkt er designet med tanke for detalje og lavet med passion."
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "highlight_text": "<strong>Vi skaber ikke bare produkter,</strong> vi skaber oplevelser der inspirerer til kreativitet og viser, hvad der er muligt."
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "Fra fantasi til virkelighed - det er det vi gør bedst. Hver print er unik, og hver kundes vision bliver til virkelighed gennem vores dedikation."
+          }
+        }
+      ]
+    }
+  },
+  "order": ["hero", "featured_products", "brand_story"]
+}

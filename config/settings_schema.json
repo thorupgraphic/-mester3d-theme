@@ -1,0 +1,70 @@
+[
+  {
+    "name": "theme_info",
+    "theme": {
+      "name": "Mester3D Theme",
+      "id": 999999
+    }
+  },
+  {
+    "name": "Farver",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primær farve (Gul)",
+        "default": "#FFD700"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Sekundær farve (Orange)",
+        "default": "#FF8C00"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent farve (Sort)",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Tekst farve",
+        "default": "#1a1a1a"
+      }
+    ]
+  },
+  {
+    "name": "Skrifttyper",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Overskriftsschrift",
+        "default": "sans-serif"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Brødtekst skrift",
+        "default": "sans-serif"
+      }
+    ]
+  },
+  {
+    "name": "Logo og billeder",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo billede"
+      },
+      {
+        "type": "image_picker",
+        "id": "mascot_image",
+        "label": "Mr. 3D maskot billede"
+      }
+    ]
+  }
+]
