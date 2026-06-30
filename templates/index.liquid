@@ -1,4 +1,27 @@
-{% section 'hero' %}
-{% section 'featured-products' %}
-{% section 'brand-story' %}
-{% section 'cta-banner' %}
+<div class="hero">
+  <h1>Lad det blive skabt</h1>
+  <p>3D-printede produkter skabt med passion og præcision</p>
+  <a href="/collections/all">Se alle produkter</a>
+</div>
+
+<div class="container">
+  <h2 class="section-title">Populære produkter</h2>
+  <div class="products">
+    {% for product in collections.featured.products limit: 8 %}
+      <div class="product">
+        <div class="product-img">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" style="width:100%; height:100%; object-fit:cover;">
+          {% else %}
+            📦
+          {% endif %}
+        </div>
+        <div class="product-info">
+          <div class="product-title">{{ product.title }}</div>
+          <div class="product-price">{{ product.price | money }}</div>
+          <a href="{{ product.url }}">Køb nu</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
