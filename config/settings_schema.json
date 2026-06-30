@@ -1,75 +1,24 @@
 [
   {
-    "name": "theme_info",
-    "theme": {
-      "name": "Mester3D",
-      "id": 999999
-    }
-  },
-  {
-    "name": "Farver",
+    "name": "Mester3D Theme",
     "settings": [
       {
         "type": "color",
-        "id": "primary_color",
+        "id": "color_primary",
         "label": "Primær farve (Gul)",
         "default": "#FFD700"
       },
       {
         "type": "color",
-        "id": "secondary_color",
+        "id": "color_secondary",
         "label": "Sekundær farve (Orange)",
         "default": "#FF8C00"
       },
       {
         "type": "color",
-        "id": "accent_color",
+        "id": "color_accent",
         "label": "Accent farve (Sort)",
         "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "text_color",
-        "label": "Tekst farve",
-        "default": "#1a1a1a"
-      }
-    ]
-  },
-  {
-    "name": "Skrifttyper",
-    "settings": [
-      {
-        "type": "font_picker",
-        "id": "body_font",
-        "label": "Brødtekst skrift",
-        "default": "shopify-sans"
-      },
-      {
-        "type": "font_picker",
-        "id": "heading_font",
-        "label": "Overskrift skrift",
-        "default": "shopify-sans"
-      }
-    ]
-  },
-  {
-    "name": "Layout",
-    "settings": [
-      {
-        "type": "select",
-        "id": "page_width",
-        "label": "Sidebredde",
-        "default": "1200",
-        "options": [
-          {
-            "value": "1200",
-            "label": "Standard (1200px)"
-          },
-          {
-            "value": "1400",
-            "label": "Bred (1400px)"
-          }
-        ]
       },
       {
         "type": "image_picker",

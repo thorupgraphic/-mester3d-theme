@@ -1,44 +1,50 @@
 <!doctype html>
-<html
-  {% if request.design_mode %}
-    class="shopify-design-mode"
-  {% endif %}
-  lang="{{ request.locale.iso_code }}"
->
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page_title }}</title>
-  <meta name="description" content="{{ page_description | escape }}">
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
 
-  {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-  {%- endif -%}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+    {%- endif -%}
 
-  {%- render 'meta-tags' -%}
-  {%- render 'stylesheets' -%}
-  {%- render 'fonts' -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
 
-  {{ content_for_header }}
-</head>
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary }};
+        --color-secondary: {{ settings.color_secondary }};
+        --color-accent: {{ settings.color_accent }};
+      }
+    </style>
 
-<body class="page-width-{{ settings.page_width }}">
-  {%- render 'skip-to-content-link', href: '#MainContent' -%}
+    {{ content_for_header }}
+  </head>
 
-  <div class="page-wrapper">
-    <header id="header-group">
-      {%- sections 'header-group' -%}
+  <body>
+    <header>
+      <h1><a href="/">🖨️ Mester3D</a></h1>
+      <nav>
+        <a href="/collections/all">Produkter</a>
+        <a href="/cart">Kurv</a>
+      </nav>
     </header>
 
-    <main id="MainContent" class="content-wrapper" role="main">
+    <main id="MainContent">
       {{ content_for_layout }}
     </main>
 
-    <footer id="footer-group">
-      {%- sections 'footer-group' -%}
+    <footer>
+      <p>&copy; 2026 Mester3D. Alle rettigheder forbeholdt.</p>
+      <div>
+        <a href="https://instagram.com" target="_blank">Instagram</a> •
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+      </div>
     </footer>
-  </div>
 
-  {%- render 'script-tags' -%}
-</body>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </body>
 </html>
