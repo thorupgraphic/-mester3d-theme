@@ -1,0 +1,35 @@
+<section class="cta-banner">
+  <h2>{{ section.settings.heading }}</h2>
+  <a href="{{ section.settings.cta_link }}" class="btn btn-dark">{{ section.settings.cta_text }}</a>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Overskrift",
+      "default": "Klar til at se din idé blive til virkelighed?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Knap tekst",
+      "default": "Lad det blive skabt"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Knap link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner"
+    }
+  ]
+}
+{% endschema %}

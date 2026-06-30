@@ -1,16 +1,23 @@
-// Mester3D Theme JavaScript
+document.addEventListener('DOMContentLoaded', function () {
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.querySelector('.main-nav');
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Mester3D theme loaded');
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('is-open');
+      if (mainNav.classList.contains('is-open')) {
+        mainNav.style.display = 'flex';
+        mainNav.style.flexDirection = 'column';
+        mainNav.style.position = 'absolute';
+        mainNav.style.top = '64px';
+        mainNav.style.left = '0';
+        mainNav.style.right = '0';
+        mainNav.style.background = '#fff';
+        mainNav.style.padding = '16px 20px';
+        mainNav.style.borderBottom = '1px solid #f0f0f0';
+      } else {
+        mainNav.style.display = 'none';
       }
     });
-  });
+  }
 });

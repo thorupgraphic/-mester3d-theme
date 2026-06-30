@@ -2,66 +2,32 @@
   .collection-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 48px 32px;
   }
 
   .collection-header {
-    margin-bottom: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
   }
 
   .collection-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
   }
 
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+  .collection-header p {
+    color: #666;
   }
 
-  .product-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: box-shadow 0.3s;
-  }
+  @media (max-width: 768px) {
+    .collection-page {
+      padding: 32px 20px;
+    }
 
-  .product-card:hover {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  }
-
-  .product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .product-info {
-    padding: 1.5rem;
-  }
-
-  .product-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .price {
-    color: var(--color-primary, #FFD700);
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-
-  .product-info a {
-    display: inline-block;
-    background: var(--color-accent, #000);
-    color: var(--color-primary, #FFD700);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    .collection-header h1 {
+      font-size: 24px;
+    }
   }
 </style>
 
@@ -73,22 +39,25 @@
     {% endif %}
   </div>
 
-  <div class="collection-products">
+  <div class="product-grid">
+    {% assign colors = 'dark,orange,yellow' | split: ',' %}
     {% for product in collection.products %}
-      <div class="product-card">
-        {% if product.featured_image %}
-          <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
-        {% else %}
-          <div style="width: 100%; height: 250px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-            <span style="color: #999;">📦</span>
-          </div>
-        {% endif %}
-        <div class="product-info">
-          <h3>{{ product.title }}</h3>
-          <div class="price">{{ product.price | money }}</div>
-          <a href="{{ product.url }}">Se produkt</a>
+      {% assign color_index = forloop.index0 | modulo: 3 %}
+      {% assign card_color = colors[color_index] %}
+      <a href="{{ product.url }}" class="product-card">
+        <div class="product-image card-{{ card_color }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}" loading="lazy">
+          {% else %}
+            <span class="placeholder-icon">📦</span>
+          {% endif %}
         </div>
-      </div>
+        <div class="product-info">
+          <div class="product-title">{{ product.title }}</div>
+          <div class="product-price">{{ product.price | money }}</div>
+          <span class="btn-small">Se produkt</span>
+        </div>
+      </a>
     {% endfor %}
   </div>
 </div>

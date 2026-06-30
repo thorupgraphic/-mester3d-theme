@@ -13,36 +13,40 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
-    <style>
-      :root {
-        --color-primary: {{ settings.color_primary }};
-        --color-secondary: {{ settings.color_secondary }};
-        --color-accent: {{ settings.color_accent }};
-      }
-    </style>
-
     {{ content_for_header }}
   </head>
 
   <body>
-    <header>
-      <h1><a href="/">🖨️ Mester3D</a></h1>
-      <nav>
+    <header class="site-header">
+      <a href="/" class="logo">
+        <span class="logo-icon">🖨️</span> Mester3D
+      </a>
+      <nav class="main-nav">
+        <a href="/">Hjem</a>
         <a href="/collections/all">Produkter</a>
-        <a href="/cart">Kurv</a>
+        <a href="/pages/om-os">Om os</a>
+        <a href="/cart" class="cart-link" aria-label="Kurv">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          {%- if cart.item_count > 0 -%}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
       </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </header>
 
     <main id="MainContent">
       {{ content_for_layout }}
     </main>
 
-    <footer>
-      <p>&copy; 2026 Mester3D. Alle rettigheder forbeholdt.</p>
-      <div>
-        <a href="https://instagram.com" target="_blank">Instagram</a> •
-        <a href="https://facebook.com" target="_blank">Facebook</a>
+    <footer class="site-footer">
+      <div class="footer-logo">Mester3D</div>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
       </div>
+      <p class="copyright">&copy; {{ 'now' | date: '%Y' }} Mester3D. Alle rettigheder forbeholdt.</p>
     </footer>
 
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
