@@ -1,5 +1,5 @@
-{{ 'base.css' | asset_url | stylesheet_tag }}
-{{ 'theme.css' | asset_url | stylesheet_tag }}
+{%- stylesheet 'base.css' | asset_url: skip_cdn: true -%}
+{%- stylesheet 'theme.css' | asset_url: skip_cdn: true -%}
 
 <style>
   :root {
@@ -7,5 +7,11 @@
     --color-secondary: {{ settings.secondary_color }};
     --color-accent: {{ settings.accent_color }};
     --color-text: {{ settings.text_color }};
+    --font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+    --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 </style>

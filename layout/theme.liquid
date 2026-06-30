@@ -1,30 +1,42 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
 
   {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}
 
   {%- render 'meta-tags' -%}
   {%- render 'stylesheets' -%}
+  {%- render 'fonts' -%}
 
   {{ content_for_header }}
 </head>
-<body>
-  <a href="#MainContent" class="skip-to-content">{{ 'accessibility.skip_to_text' | t }}</a>
+
+<body class="page-width-{{ settings.page_width }}">
+  {%- render 'skip-to-content-link', href: '#MainContent' -%}
 
   <div class="page-wrapper">
-    {% sections 'header' %}
+    <header id="header-group">
+      {%- sections 'header-group' -%}
+    </header>
 
-    <main id="MainContent" class="content-wrapper">
+    <main id="MainContent" class="content-wrapper" role="main">
       {{ content_for_layout }}
     </main>
 
-    {% sections 'footer' %}
+    <footer id="footer-group">
+      {%- sections 'footer-group' -%}
+    </footer>
   </div>
 
   {%- render 'script-tags' -%}

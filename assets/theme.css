@@ -1,19 +1,30 @@
-/* Mester3D Theme Styles */
+/* Mester3D Theme - Custom Styles */
+
+/* CSS Variables Override */
+:root {
+  --page-width: 1200px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --border-radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+  --transition: all 0.3s ease;
+}
 
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -21,38 +32,60 @@
   }
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
+@keyframes slideInDown {
+  from {
+    opacity: 0;
     transform: translateY(-20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Utility Classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+/* Components */
 .btn {
-  display: inline-block;
-  padding: 12px 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
   background: var(--color-primary);
   color: var(--color-accent);
-  text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   font-weight: 600;
-  transition: all 0.3s;
-  border: none;
+  font-size: 1rem;
+  transition: var(--transition);
+  text-decoration: none;
   cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .btn-dark {
@@ -65,44 +98,80 @@
   color: var(--color-accent);
 }
 
-/* Responsive Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.3;
+/* Section Base */
+section {
+  animation: fadeIn 0.8s ease-out;
 }
 
-h1 {
-  font-size: 3rem;
+.section-container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
-h2 {
-  font-size: 2.5rem;
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
 }
 
-h3 {
-  font-size: 2rem;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: var(--spacing-lg);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+  }
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-md);
   }
 
-  h2 {
-    font-size: 1.75rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
+  .section-container {
+    padding: var(--spacing-xl) var(--spacing-md);
   }
 }
 
-/* Product Card Improvements */
-.product-card {
-  animation: slideInUp 0.6s ease-out;
-}
-
-/* Section Spacing */
-section {
-  animation: fadeIn 0.8s ease-out;
+/* Responsive */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_text": "🖨️ Mester3D"
+      }
+    }
+  },
+  "order": ["header"]
+}

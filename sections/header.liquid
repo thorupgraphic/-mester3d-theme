@@ -1,63 +1,84 @@
 <style>
   .header {
     background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
   }
 
   .header-inner {
-    max-width: 1200px;
+    max-width: var(--page-width);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 1.25rem 1.5rem;
   }
 
   .header-logo {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: -0.5px;
+    transition: transform 0.3s;
+  }
+
+  .header-logo:hover {
+    transform: scale(1.02);
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
   .header-menu {
     display: flex;
-    gap: 30px;
+    gap: 2rem;
     list-style: none;
   }
 
+  .header-menu li {
+    position: relative;
+  }
+
   .header-menu a {
-    text-decoration: none;
     color: var(--color-text);
     font-weight: 500;
+    font-size: 0.95rem;
     transition: color 0.3s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
   }
 
   .header-menu a:hover {
     color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 
   @media (max-width: 768px) {
     .header-menu {
       display: none;
     }
+
+    .header-inner {
+      padding: 1rem 1.5rem;
+    }
   }
 </style>
 
 <header class="header">
   <div class="header-inner">
-    <a href="/" class="header-logo">{{ section.settings.logo_text }}</a>
-    <nav>
+    <a href="/" class="header-logo" title="Mester3D">{{ section.settings.logo_text }}</a>
+    <nav class="header-nav" role="navigation" aria-label="Hovedmenu">
       <ul class="header-menu">
         <li><a href="/">Hjem</a></li>
         <li><a href="/collections/all">Produkter</a></li>
-        <li><a href="/cart">Kurv</a></li>
+        <li><a href="/cart" title="Handlevogn">Kurv</a></li>
       </ul>
     </nav>
   </div>
