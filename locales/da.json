@@ -1,0 +1,9 @@
+{
+  "accessibility": {
+    "skip_to_text": "Gå til indhold"
+  },
+  "general": {
+    "404": "Side ikke fundet",
+    "no_cookies": "Cookies er deaktiveret"
+  }
+}

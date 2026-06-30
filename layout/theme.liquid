@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- endif -%}
+
+  {%- render 'meta-tags' -%}
+  {%- render 'stylesheets' -%}
+
+  {{ content_for_header }}
+</head>
+<body>
+  <a href="#MainContent" class="skip-to-content">{{ 'accessibility.skip_to_text' | t }}</a>
+
+  <div class="page-wrapper">
+    {% sections 'header' %}
+
+    <main id="MainContent" class="content-wrapper">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer' %}
+  </div>
+
+  {%- render 'script-tags' -%}
+</body>
+</html>

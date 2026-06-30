@@ -1,0 +1,78 @@
+<style>
+  .header {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .header-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  .header-menu a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .header-menu a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .header-menu {
+      display: none;
+    }
+  }
+</style>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">{{ section.settings.logo_text }}</a>
+    <nav>
+      <ul class="header-menu">
+        <li><a href="/">Hjem</a></li>
+        <li><a href="/collections/all">Produkter</a></li>
+        <li><a href="/cart">Kurv</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo tekst",
+      "default": "🖨️ Mester3D"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Lad det blive skabt!",
+        "subheading": "3D-printede produkter med sjæl og skaberkraft",
+        "cta_text": "Se vores kreationer",
+        "cta_link": "/collections/all"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Vores Kreationer",
+        "description": "Håndværk møder teknologi - se vores seneste 3D-printede mesterværker",
+        "product_limit": 8
+      }
+    }
+  },
+  "order": ["hero", "featured_products"]
+}

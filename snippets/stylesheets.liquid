@@ -1,0 +1,11 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+
+<style>
+  :root {
+    --color-primary: {{ settings.primary_color }};
+    --color-secondary: {{ settings.secondary_color }};
+    --color-accent: {{ settings.accent_color }};
+    --color-text: {{ settings.text_color }};
+  }
+</style>
